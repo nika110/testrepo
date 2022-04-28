@@ -1,0 +1,112 @@
+@media screen and (max-width: 1060px) {
+    .h1text {
+        font-size: 30px;
+    }
+
+}
+.phone-menu{
+    display: none;
+}
+.phone-menu ul{
+}
+.phone-menu ul li{
+    font-size: 1.8rem;
+    /* margin: 3px 0px 3px 0px; */
+    padding: 9px 0px 9px 0px ;
+    cursor: pointer;
+    color: #deb887;
+    border-bottom: 1px solid #deb887;
+}
+.phone-menu ul li:hover{
+    background-color: #deb887;
+}
+
+@media screen and (max-width: 800px) {
+    .header-div{
+        display: flex;
+        /* justify-content: flex-end; */
+        /* padding: 20px 20px 20px 0px; */
+    }
+    .ul{
+        /* justify-content: flex-end; */
+    }
+    .nav{
+        margin-top: 0px;
+    }
+    .ul{
+        height: auto;
+    }
+    .header-div, .nav-list {
+        width: 100%;
+    }
+    .nav-list {
+        display: none;
+        
+    }
+    /* .logo { */
+    /* .logo {
+        display: block;
+        
+    } */
+    .logo{
+        transform: none;
+        width: 80px;
+        transform: translateY(-6px);
+        transform: translateX(20px);
+    }
+    .burger{
+        margin-right: 20px;
+    }
+
+    .bars {
+        font-size: 30px;
+        color: #deb887;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-main{
+        flex-direction: column;
+        height: auto;
+    }
+    footer{
+        height: auto;
+    }
+    .container4 {
+        flex-direction: column;
+    }
+    .map{
+        display: none;
+    }
+
+    #portfolio .porfolio-main {
+        /* max-width: 100%; */
+        height: auto;
+        /* display: grid; */
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        /* grid-gap: 7px; */
+      }
+      .porfolio-main :nth-child(1),:nth-child(3), :nth-child(5){
+        /* grid-column: span 2; */
+        /* background-position: center; */
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+      }
+      .porfolio-main :nth-child(1){
+          grid-column: span 6;
+        /* grid-column: span 2; */
+        /* background-position: center; */
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+      }
+      .porfolio-main div{
+          grid-column: span 6;
+      }
+      #portfolio .porfolio-main .portfolio-box .box-upper {
+          margin-top: 70px;
+          margin-bottom: 90px;
+      }
+
+}

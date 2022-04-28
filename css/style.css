@@ -1,0 +1,687 @@
+.body {
+  background: linear-gradient(RGB(223, 207, 190), rgba(195, 196, 192, 0.925));
+  
+}
+
+/* navigation */
+.nav {
+  margin-top: 20px;
+  text-align: center;
+  /* background-color: red; */
+  width: 100%;
+}
+.bars{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ul {
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    /* background-color: rebeccapurple; */
+    width: 70%;
+    margin: 0 auto;
+    
+}
+
+.header-div {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
+    position: fixed;
+    background-color: #800000;
+    /* background-color: yellow; */
+    opacity: 0.9;
+    z-index: 1000;
+}
+.ul a{
+  cursor: pointer;
+}
+
+.nav-text:hover{
+  border-bottom: 2px solid #deb887;
+}
+
+.nav-list {
+    /* background-color: teal; */
+    justify-content: space-around;
+    font-size: 25px;
+    color: #deb887;
+    text-transform: uppercase;
+}
+
+.nav-list:hover {
+  cursor: pointer;
+}
+
+.bars {
+    display: none;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    transform: translate(0%,-43%);
+    overflow: hidden;
+}
+
+/* Home */
+.container0 {
+  position: relative;
+  background-image: url(../img/house2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  animation: aaa 30s infinite;
+}
+
+.section0-blur{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: black;
+  opacity: 0.4;
+}
+
+@keyframes aaa {
+  20% {
+    background-image: url(../img/vineyard1.jpg);
+  }
+  40% {
+    background-image: url(../img/house.jpg);
+  }
+  60% {
+    background-image: url(../img/vineyard6.jpg);
+  }
+  80% {
+    background-image: url(../img/vineyard5.jpg);
+  }
+  100% {
+    background-image: url(../img/house2.jpg);
+  }
+}
+
+.h1 {
+  margin: 0 auto;
+  width: 35%;
+  color: #fff;
+  font-size: 25px;
+  display: relative;
+}
+
+.h1text{
+font-family: 'Cormorant Infant', serif;
+font-size: 6vh;
+text-align: center;
+line-height: 8vh;
+position: relative;
+z-index: 200;
+}
+
+.container1 h1{
+  font-size: 50px;
+  margin-bottom: 100px;
+  font-family: 'Cormorant Infant', serif;
+  color: #800000;
+}
+
+
+.gallery{
+  width: 90%;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow-x: auto;
+  position: relative;
+  scroll-snap-type: both mandatory;
+}
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+.gallery button{
+  position: absolute;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  top: 50%;
+  cursor: pointer;
+}
+.gallery #gallery-btn1{
+  left: 20px;
+}
+.gallery #gallery-btn2{
+  right: 20px;
+}
+
+
+
+.gallery-image{
+  width: 600px;
+  height: 100%;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+
+
+
+
+.container1 {
+  /* background-image: url(../img/kaxeti-blur.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 30px;
+  /* animation: aaa 10s infinite; */
+  
+}
+
+
+/* .slider {
+  width: 800px;
+  height: 400px;
+  
+} */
+
+
+.logokai {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+.kailogo {
+  width: 270px;
+  height: auto;
+}
+
+.explora {
+  font-family: 'Birthstone', cursive;
+  color: #fff;
+  font-size: 25px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+.birthstone {
+  font-family: 'Explora', cursive;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 10px;
+  
+}
+
+.left-content {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1700px;
+    width: 100%;
+}
+
+.page1-p {
+  color: #fff;
+}
+
+.vineyard {
+    display: flex;
+    max-width: 50%;
+    height: auto;
+    
+}
+
+/* gallery */
+#portfolio {
+  padding: 108px 0px;
+}
+#portfolio h1{
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Cormorant Infant', serif;
+  color: #800000;
+}
+.porfolio-main .portfolio-box{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.porfolio-main .portfolio-box:nth-child(1){
+  background-image: url(../img/wine4.jpg);
+}
+.porfolio-main .portfolio-box:nth-child(2){
+  background-image: url(../img/venaxi.jpg);
+
+}
+.porfolio-main .portfolio-box:nth-child(3){
+  background-image: url(../img/wine3.jpg);
+}
+.porfolio-main .portfolio-box:nth-child(4){
+  background-image: url(../img/wine.jpg);
+}
+.porfolio-main .portfolio-box:nth-child(5){
+  background-image: url(../img/winesss.JPG);
+}
+.porfolio-main .portfolio-box:nth-child(6){
+  background-image: url(../img/bottle3.jpg);
+  grid-column: span 2;
+}
+.porfolio-main .portfolio-box:nth-child(7){
+  background-image: url(../img/venaxi.jpg);
+}
+
+
+
+#portfolio .portfolio-header {
+  padding-bottom: 85px;
+}
+#portfolio .portfolio-header h2 {
+  text-align: center;
+}
+#portfolio .portfolio-header .whole-icon {
+  padding-top: 5px;
+}
+#portfolio .porfolio-main {
+  max-width: 100%;
+  height: 765px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 7px;
+}
+.porfolio-main :nth-child(1),:nth-child(3), :nth-child(5){
+  grid-column: span 2;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#portfolio .porfolio-main .portfolio-box {
+  background-color: #000;
+  position: relative;
+  
+}
+#portfolio .porfolio-main .portfolio-box:hover {
+  background-color: #292929;
+  
+}
+#portfolio .porfolio-main .portfolio-box:hover .box-lower, #portfolio .porfolio-main .portfolio-box:hover .box-upper {
+  opacity: 1;
+}
+#portfolio .porfolio-main .portfolio-box .box-upper {
+  margin-top: 160px;
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  margin-right: 4px;
+  transition: opacity 1.5s;
+}
+#portfolio .porfolio-main .portfolio-box .box-upper .wre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  background-color: transparent;
+  border: 2px solid #800000;
+  border-radius: 50%;
+}
+#portfolio .porfolio-main .portfolio-box .box-upper .wre:first-of-type {
+  transform: translateX(-11px);
+}
+#portfolio .porfolio-main .portfolio-box .box-upper .wre:hover {
+  background-color: #800000;
+}
+#portfolio .porfolio-main .portfolio-box .box-lower {
+  background-color: #000;
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  transition: opacity 1s;
+}
+#portfolio .porfolio-main .portfolio-box .box-lower h5 {
+  font-size: 16.98px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+#portfolio .porfolio-main .portfolio-box .box-lower p {
+  font-size: 13px;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 17.6px;
+  color: #800000;
+}
+
+/* section2 */
+.background1 {
+  background-image: url(../img/glass.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.kaiwinery-lh1 {
+  display: flex;
+  width: 600px;
+  color: #fff;
+  flex-direction: column;
+  line-height: 2em;
+  background: #141313;
+  border-radius: 20px;
+  padding: 15px;
+  margin-right: 50px;
+
+}
+
+.wine1 {
+  height: 300px;
+  width: auto;
+}
+.wine2 {
+  height: 300px;
+  width: auto;
+}
+.container3 {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.kaikisi {
+  width: 300px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.kaiwine-text {
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10px;
+  
+}
+
+/* section 3 */
+.container2 {
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+.kaiwinery-lh {
+  display: flex;
+  width: 600px;
+  color: #fff;
+  flex-direction: column;
+  line-height: 2em;
+  background: #800000;
+  border-radius: 20px;
+  padding: 15px;
+  margin-right: 50px;
+
+}
+
+.kaitext1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.kaiwineryhead {
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.kaiwinery-rh {
+  width: 600px;
+}
+.kaiwineryph {
+  width: 500px;
+  height: auto;
+}
+
+.kaiwine-r {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+  /* contact */
+ .container4 {
+  background-color: rgb(29, 29, 29);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  padding: 45px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  
+ }
+
+ .lionlogo {
+   width: 300px;
+ }
+
+ .map {
+  max-width: 450px;
+  width: 100%;
+  
+ }
+
+ .form {
+  max-width: 352px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+ }
+ 
+ .input2 {
+  max-width: 350px;
+  width: 100%;
+  height: 100px;
+  resize: none;
+  background-color: #F8F8F8;
+  padding: 15px; 
+  margin-left: 16px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.input {
+  max-width: 350px;
+  width: 100%;
+  height: 60px;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  background-color: #F8F8F8;
+  padding-left: 15px;
+  border: none;
+  border-radius: 5px;
+
+}
+
+.button {
+    max-width: 350px;
+    width: 100%;
+    height: 60px;
+    background-color: #800000;
+    color: #F2F2F2;
+    margin-left: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+}
+
+.button:hover {
+  background-color: #b45918;
+  
+}
+
+.far {
+  margin-left: 5px;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+/* footer */
+
+
+footer{
+  background-color: #800000;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #deb887;
+}
+.footer-main{
+  max-width: 1170px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-image{
+  position: relative;
+  top: -5px;
+}
+.footer-main .footer-flex{
+  display: flex;
+  align-items: center;
+}
+.footer-main p span{
+  color: white;
+}
+.footer-main>p{
+  margin-left: 30px;
+  letter-spacing: 0.3px;
+}
+.end{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 100;
+  font-size: 14px;
+  width: 434px;
+}
+.end p{
+  line-height: 70px;
+}
+.end p:hover{
+  margin-top: -5px;
+  border-top: 5px solid #deb887;
+}
+
+
+#giji {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #deb887;
+  margin: 6px 20px 0px 0px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#section2{
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  margin-bottom: 400px;
+  align-items: center;
+  position: relative;
+}
+.section2-back{
+height: 100%;
+width: 60%;
+display: flex;
+}
+.section2-front{
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+.section2-img-front{
+  height: 100%;
+}
+.section2-img-back{
+height: 100%;
+}
+#section2 button{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 60px;
+  font-weight: bold;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+}
+
+#btn1{
+position: absolute;
+right: 20px;
+}
+#btn2{
+  position: absolute;
+  left: 20px;
+}
