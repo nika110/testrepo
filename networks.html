@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networks | Astral Bridge</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="particle-container">
+    <canvas id="particles"></canvas>
+  </div>
+
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <svg class="logo" viewBox="0 0 128 128" fill="none">
+          <path d="M64 16C37.49 16 16 37.49 16 64C16 90.51 37.49 112 64 112C90.51 112 112 90.51 112 64C112 37.49 90.51 16 64 16ZM64 96C46.33 96 32 81.67 32 64C32 46.33 46.33 32 64 32C81.67 32 96 46.33 96 64C96 81.67 81.67 96 64 96Z" fill="url(#logoGradient)"/>
+          <defs>
+            <linearGradient id="logoGradient" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#7b61ff" />
+              <stop offset="50%" stop-color="#00f7ff" />
+              <stop offset="100%" stop-color="#ff3bff" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">Astral Bridge</span>
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="explore.html" class="nav-link">Explore</a></li>
+        <li><a href="docs.html" class="nav-link">Docs</a></li>
+      </ul>
+      <button class="connect-wallet">Connect Wallet</button>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="page-header">
+      <h1 class="gradient-text">Supported Networks</h1>
+      <p>Astral Bridge connects multiple blockchains with fast, secure, and low-cost transfers</p>
+    </section>
+
+    <section class="networks-grid">
+      <div class="network-card">
+        <div class="network-icon ethereum"></div>
+        <div class="network-details">
+          <h3>Ethereum</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">1</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">ETH</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$2.5B</span>
+            </div>
+          </div>
+          <p class="network-description">The original smart contract platform and the backbone of DeFi, supporting a vast ecosystem of applications and tokens.</p>
+          <div class="network-details-row">
+            <a href="https://etherscan.io" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon solana"></div>
+        <div class="network-details">
+          <h3>Solana</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">N/A</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">SOL</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$890M</span>
+            </div>
+          </div>
+          <p class="network-description">High-performance blockchain with fast transaction speeds and low fees, ideal for DeFi applications and NFT marketplaces.</p>
+          <div class="network-details-row">
+            <a href="https://explorer.solana.com" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon bsc"></div>
+        <div class="network-details">
+          <h3>Binance Smart Chain</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">56</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">BNB</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$1.2B</span>
+            </div>
+          </div>
+          <p class="network-description">EVM-compatible blockchain developed by Binance, offering low transaction fees and fast confirmation times.</p>
+          <div class="network-details-row">
+            <a href="https://bscscan.com" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon polygon"></div>
+        <div class="network-details">
+          <h3>Polygon</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">137</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">MATIC</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$720M</span>
+            </div>
+          </div>
+          <p class="network-description">Layer 2 scaling solution for Ethereum, providing faster transactions and lower fees while maintaining Ethereum's security.</p>
+          <div class="network-details-row">
+            <a href="https://polygonscan.com" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon avalanche"></div>
+        <div class="network-details">
+          <h3>Avalanche</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">43114</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">AVAX</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$450M</span>
+            </div>
+          </div>
+          <p class="network-description">Platform focused on high throughput, security, and decentralization with a subnet architecture for customizable blockchains.</p>
+          <div class="network-details-row">
+            <a href="https://snowtrace.io" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon arbitrum"></div>
+        <div class="network-details">
+          <h3>Arbitrum</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">42161</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">ETH</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$320M</span>
+            </div>
+          </div>
+          <p class="network-description">Ethereum Layer 2 scaling solution using optimistic rollups to increase throughput and reduce gas costs while maintaining security.</p>
+          <div class="network-details-row">
+            <a href="https://arbiscan.io" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon optimism"></div>
+        <div class="network-details">
+          <h3>Optimism</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">10</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">ETH</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$280M</span>
+            </div>
+          </div>
+          <p class="network-description">Ethereum Layer 2 solution using optimistic rollups to increase scalability while maintaining compatibility with Ethereum tooling.</p>
+          <div class="network-details-row">
+            <a href="https://optimistic.etherscan.io" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-card">
+        <div class="network-icon base"></div>
+        <div class="network-details">
+          <h3>Base</h3>
+          <div class="network-stats">
+            <div class="network-stat">
+              <span class="stat-label">Chain ID</span>
+              <span class="stat-value">8453</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">Native Token</span>
+              <span class="stat-value">ETH</span>
+            </div>
+            <div class="network-stat">
+              <span class="stat-label">TVL</span>
+              <span class="stat-value">$190M</span>
+            </div>
+          </div>
+          <p class="network-description">Layer 2 blockchain built on Optimism's OP Stack, launched by Coinbase to provide a secure, low-cost environment for decentralized applications.</p>
+          <div class="network-details-row">
+            <a href="https://basescan.org" target="_blank" class="text-link">Explorer <span class="link-arrow">→</span></a>
+            <span class="network-status active">Active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-network-section">
+      <div class="add-network-card">
+        <h2>Add These Networks to Your Wallet</h2>
+        <p>Configure your wallet to interact with these blockchains directly.</p>
+        <div class="network-buttons">
+          <button class="network-button ethereum">Add Ethereum</button>
+          <button class="network-button solana">Add Solana</button>
+          <button class="network-button bsc">Add BSC</button>
+          <button class="network-button polygon">Add Polygon</button>
+          <button class="network-button avalanche">Add Avalanche</button>
+          <button class="network-button arbitrum">Add Arbitrum</button>
+          <button class="network-button optimism">Add Optimism</button>
+          <button class="network-button base">Add Base</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a href="index.html">
+          <svg class="logo" viewBox="0 0 128 128" fill="none">
+            <path d="M64 16C37.49 16 16 37.49 16 64C16 90.51 37.49 112 64 112C90.51 112 112 90.51 112 64C112 37.49 90.51 16 64 16ZM64 96C46.33 96 32 81.67 32 64C32 46.33 46.33 32 64 32C81.67 32 96 46.33 96 64C96 81.67 81.67 96 64 96Z" fill="url(#logoGradient)"/>
+          </svg>
+          <span class="logo-text">Astral Bridge</span>
+        </a>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html">Bridge</a></li>
+            <li><a href="networks.html">Networks</a></li>
+            <li><a href="tokens.html">Tokens</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2023 Astral Bridge. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M23 3.01006C22.0424 3.68553 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 22.6608 4.40277 23 3.01006Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html> 
