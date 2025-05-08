@@ -65,10 +65,7 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
       <div className="token-selector" onClick={toggleDropdown}>
         <div className={`token-icon ${selectedTokenData?.id || 'eth'}`}>
           {/* Token icon would go here */}
-          <svg viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#7b61ff"/>
-            <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+      
         </div>
         <span>{selectedTokenData?.symbol || 'Select Token'}</span>
         <div className="selector-arrow">
