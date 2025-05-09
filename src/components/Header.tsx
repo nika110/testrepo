@@ -22,10 +22,8 @@ const Header: React.FC = () => {
       </div>
       <nav>
         <ul className="nav-links">
-          <li><Link to="/explore" className="nav-link">Explore</Link></li>
           <li><Link to="/docs" className="nav-link">Docs</Link></li>
           <li><Link to="/networks" className="nav-link">Networks</Link></li>
-          <li><Link to="/tokens" className="nav-link">Tokens</Link></li>
         </ul>
         <button className="connect-wallet">Connect Wallet</button>
       </nav>
