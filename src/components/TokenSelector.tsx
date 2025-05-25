@@ -152,12 +152,11 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
           return;
         }
       }
-      
-      // Otherwise select the first available
+        // Otherwise select the first available
       console.log('Selecting first available token:', availableTokens[0].id);
       onTokenSelect(availableTokens[0].id);
     }
-  }, [sourceChain, destinationChain, availableTokens]);
+  }, [sourceChain, destinationChain, availableTokens, onTokenSelect, selectedToken]);
   
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -293,15 +292,13 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
     
     // Update position when dropdown opens or window resizes
     useEffect(() => {
-      const updatePosition = () => {
-        if (tokenSelectorRef.current) {
+      const updatePosition = () => {        if (tokenSelectorRef.current) {
           const rect = tokenSelectorRef.current.getBoundingClientRect();
           
           // Determine if we need to right-align or left-align the dropdown
           // We want it to appear directly below the token selector, centered if possible
           const viewportWidth = window.innerWidth;
           const spaceToRight = viewportWidth - rect.right;
-          const spaceToLeft = rect.left;
           
           // Check if we're in the token selector to the right of the input
           // In this case we need special positioning to avoid overlapping the button

@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BridgeForm from '../components/BridgeForm';
+import BridgeModal from '../components/BridgeModal';
 import FeatureCard from '../components/FeatureCard';
 import HowItWorks from '../components/HowItWorks';
 import ChainCarousel from '../components/ChainCarousel';
 
 const Home: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({
+    sourceChain: '',
+    destinationChain: '',
+    amount: '',
+    selectedToken: '',
+    recipientAddress: ''
+  });
+
+  const handleOpenModal = (data: {
+    sourceChain: string;
+    destinationChain: string;
+    amount: string;
+    selectedToken: string;
+    recipientAddress: string;
+  }) => {
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main>
       <section className="hero">
@@ -12,7 +37,7 @@ const Home: React.FC = () => {
           <h1 className="gradient-text">Seamless Cross-Chain Bridging</h1>
           <p>Transfer assets between Solana and other leading blockchains with unparalleled speed and security</p>
           
-          <BridgeForm />
+          <BridgeForm onOpenModal={handleOpenModal} />
         </div>
 
         <div className="hero-visual">
@@ -73,9 +98,18 @@ const Home: React.FC = () => {
             description="Minimize costs with our optimized bridging technology and dynamic fee structure"
           />
         </div>
-      </section>
-
-      <HowItWorks />
+      </section>      <HowItWorks />
+      
+      {/* Bridge Modal - rendered at page level for proper overlay */}
+      <BridgeModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        sourceChain={modalData.sourceChain}
+        destinationChain={modalData.destinationChain}
+        amount={modalData.amount}
+        selectedToken={modalData.selectedToken}
+        recipientAddress={modalData.recipientAddress}
+      />
     </main>
   );
 };

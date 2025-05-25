@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import ChainSelector from './ChainSelector';
 import TokenSelector from './TokenSelector';
-import { tokenData, Token } from '../data/tokenData';
+import { tokenData } from '../data/tokenData';
 
-const BridgeForm: React.FC = () => {
+interface BridgeFormProps {
+  onOpenModal: (data: {
+    sourceChain: string;
+    destinationChain: string;
+    amount: string;
+    selectedToken: string;
+    recipientAddress: string;
+  }) => void;
+}
+
+const BridgeForm: React.FC<BridgeFormProps> = ({ onOpenModal }) => {
   const [sourceChain, setSourceChain] = useState('ethereum');
-  const [destinationChain, setDestinationChain] = useState('solana');
-  const [selectedToken, setSelectedToken] = useState('sol'); // Default to SOL for ETH to SOL bridging
+  const [destinationChain, setDestinationChain] = useState('solana');  const [selectedToken, setSelectedToken] = useState('sol'); // Default to SOL for ETH to SOL bridging
   const [amount, setAmount] = useState('');
   const [recipientAddress, setRecipientAddress] = useState('');
   
@@ -30,8 +39,7 @@ const BridgeForm: React.FC = () => {
         return 'eth';
     }
   };
-  
-  // Initialize with the main token for Solana when bridging from Ethereum to Solana
+    // Initialize with the main token for Solana when bridging from Ethereum to Solana
   useEffect(() => {
     console.log('Initial setup: ETH->SOL with SOL token');
     if (sourceChain === 'ethereum' && destinationChain === 'solana') {
@@ -42,7 +50,7 @@ const BridgeForm: React.FC = () => {
         setSelectedToken('sol');
       }
     }
-  }, []);
+  }, [sourceChain, destinationChain]);
   
   // Handle destination chain change
   const handleDestinationChainChange = (chainId: string) => {
@@ -147,17 +155,58 @@ const BridgeForm: React.FC = () => {
       }
     }
   };
-  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Bridge Preview:', {
+    
+    // Basic validation with better error messages
+    if (!amount || amount.trim() === '') {
+      alert('Please enter an amount to bridge');
+      return;
+    }
+    
+    const numericAmount = parseFloat(amount);
+    if (isNaN(numericAmount) || numericAmount <= 0) {
+      alert('Please enter a valid amount greater than 0');
+      return;
+    }
+    
+    if (numericAmount > 1000000) {
+      alert('Amount too large. Please enter a smaller amount');
+      return;
+    }
+    
+    if (!recipientAddress.trim()) {
+      alert('Please enter a recipient address');
+      return;
+    }
+    
+    // Basic address validation
+    if (recipientAddress.length < 10) {
+      alert('Please enter a valid recipient address');
+      return;
+    }
+    
+    // Check if source and destination chains are different
+    if (sourceChain === destinationChain) {
+      alert('Source and destination chains must be different');
+      return;
+    }
+      console.log('Bridge Preview:', {
       sourceChain,
       destinationChain,
       selectedToken,
       amount,
       recipientAddress
     });
-    // This would typically trigger a confirmation modal or the next step
+    
+    // Open the bridge modal via prop function
+    onOpenModal({
+      sourceChain,
+      destinationChain,
+      selectedToken,
+      amount,
+      recipientAddress
+    });
   };
   
   // Handle token selection in TokenSelector - very important to respect user choices
@@ -201,13 +250,14 @@ const BridgeForm: React.FC = () => {
 
         <div className="amount-input-container">
           <label htmlFor="amount">Amount</label>
-          <div className="amount-input">
-            <input 
-              type="text" 
+          <div className="amount-input">            <input 
+              type="number" 
               id="amount" 
               placeholder="0.00"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
+              min="0"
+              step="any"
             />
             <TokenSelector
               selectedToken={selectedToken}
@@ -229,9 +279,7 @@ const BridgeForm: React.FC = () => {
               onChange={(e) => setRecipientAddress(e.target.value)}
             />
           </div>
-        </div>
-
-        <button 
+        </div>        <button 
           className="cta-button preview-bridge"
           onClick={handleSubmit}
         >
@@ -242,4 +290,4 @@ const BridgeForm: React.FC = () => {
   );
 };
 
-export default BridgeForm; 
+export default BridgeForm;
