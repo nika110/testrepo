@@ -1,256 +1,375 @@
-import React, { useState } from 'react';
+import React from 'react';
+import '../styles.css';
 
 const Docs: React.FC = () => {
-  const [activeTopic, setActiveTopic] = useState('intro');
-  
   return (
-    <main className="docs-page">
-      <div className="docs-sidebar">
-        <h3>Documentation</h3>
-        <nav className="docs-nav">
-          <div className="nav-section">
-            <h4>Getting Started</h4>
-            <ul>
-              <li>
-                <button 
-                  className={activeTopic === 'intro' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('intro')}
-                >
-                  Introduction
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'quick-start' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('quick-start')}
-                >
-                  Quick Start
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'connect-wallet' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('connect-wallet')}
-                >
-                  Connect Your Wallet
-                </button>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="nav-section">
-            <h4>Bridge Operations</h4>
-            <ul>
-              <li>
-                <button 
-                  className={activeTopic === 'how-it-works' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('how-it-works')}
-                >
-                  How Bridging Works
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'send-assets' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('send-assets')}
-                >
-                  Send Assets
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'receive-assets' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('receive-assets')}
-                >
-                  Receive Assets
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'fees' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('fees')}
-                >
-                  Bridge Fees
-                </button>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="nav-section">
-            <h4>Networks & Assets</h4>
-            <ul>
-              <li>
-                <button 
-                  className={activeTopic === 'supported-chains' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('supported-chains')}
-                >
-                  Supported Chains
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'supported-tokens' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('supported-tokens')}
-                >
-                  Supported Tokens
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'network-specifics' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('network-specifics')}
-                >
-                  Network Specifics
-                </button>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="nav-section">
-            <h4>Advanced</h4>
-            <ul>
-              <li>
-                <button 
-                  className={activeTopic === 'api' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('api')}
-                >
-                  API Documentation
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'security' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('security')}
-                >
-                  Security Model
-                </button>
-              </li>
-              <li>
-                <button 
-                  className={activeTopic === 'troubleshooting' ? 'active' : ''} 
-                  onClick={() => setActiveTopic('troubleshooting')}
-                >
-                  Troubleshooting
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      
+    <div className="docs-container">
       <div className="docs-content">
-        {activeTopic === 'intro' && (
-          <article>
-            <h1>Introduction to Astral Bridge</h1>
-            <p className="intro-text">
-              Astral Bridge is a high-performance cross-chain bridge, enabling seamless asset transfers between Solana and other leading blockchains including Ethereum, Polygon, Binance Smart Chain, and more.
-            </p>
-            
-            <h2>Why Use Astral Bridge?</h2>
-            <div className="docs-cards">
-              <div className="docs-card">
-                <h3>Speed</h3>
-                <p>Complete cross-chain transfers in seconds, not minutes or hours, thanks to our optimized relay infrastructure.</p>
-              </div>
-              
-              <div className="docs-card">
-                <h3>Security</h3>
-                <p>Bank-grade security with multi-layer protection, advanced cryptography, and fully audited smart contracts.</p>
-              </div>
-              
-              <div className="docs-card">
-                <h3>Low Fees</h3>
-                <p>Minimize costs with our optimized bridging technology and dynamic fee structure that adapts to network conditions.</p>
-              </div>
+        {/* Header Section */}
+        <div className="docs-header">
+          <h1>Astral Bridge API Documentation</h1>
+          <p className="docs-subtitle">
+            Complete API reference for integrating cross-chain bridge functionality
+          </p>
+        </div>
+
+        {/* Introduction Section */}
+        <section className="docs-section">
+          <h2>Introduction</h2>
+          <p>
+            The Astral Bridge API provides seamless cross-chain asset bridging capabilities. 
+            Our REST API enables developers to integrate bridging functionality into their applications
+            with support for multiple blockchain networks.
+          </p>
+          <div className="api-info">
+            <div className="api-base">
+              <strong>Base URL:</strong> <code>https://api.astralbridge.io/v1</code>
             </div>
-            
-            <h2>Core Features</h2>
-            <ul className="feature-list">
-              <li>Bridge assets between 8+ major blockchains</li>
-              <li>Support for 50+ tokens and growing</li>
-              <li>Simple, intuitive user interface</li>
-              <li>Transaction status tracking and history</li>
-              <li>24/7 automated bridge operation</li>
-              <li>Advanced security measures</li>
-            </ul>
-            
-            <div className="next-steps">
-              <h3>Ready to get started?</h3>
-              <p>Follow our <button onClick={() => setActiveTopic('quick-start')}>Quick Start Guide</button> to make your first cross-chain transfer.</p>
+            <div className="api-features">
+              <h4>Key Features:</h4>
+              <ul>
+                <li>Cross-chain asset transfers</li>
+                <li>Real-time transaction tracking</li>
+                <li>Comprehensive network support</li>
+                <li>Webhook notifications</li>
+                <li>Rate limiting and security</li>
+              </ul>
             </div>
-          </article>
-        )}
-        
-        {activeTopic === 'how-it-works' && (
-          <article>
-            <h1>How Astral Bridge Works</h1>
-            <p className="intro-text">
-              Understanding the mechanism behind Astral Bridge helps you make informed decisions about your cross-chain transfers.
-            </p>
-            
-            <h2>The Bridge Architecture</h2>
-            <p>
-              Astral Bridge employs a hybrid architecture combining the security of lock-and-mint with the speed of validator networks:
-            </p>
-            
-            <div className="architecture-diagram">
-              <div className="diagram-placeholder">
-                [Architecture Diagram]
-              </div>
-            </div>
-            
-            <h3>Step 1: Lock or Burn</h3>
-            <p>
-              When transferring from the source chain, your assets are either locked in a secure smart contract (for most chains) or burned (for certain token standards that support it).
-            </p>
-            
-            <h3>Step 2: Verification</h3>
-            <p>
-              A decentralized network of validators confirms the transaction on the source chain. Multiple validators must reach consensus before proceeding.
-            </p>
-            
-            <h3>Step 3: Mint or Release</h3>
-            <p>
-              Once verified, equivalent tokens are either minted on the destination chain (if you're receiving wrapped tokens) or released from the bridge reserves (if receiving native tokens).
-            </p>
-            
-            <h2>Security Measures</h2>
+          </div>
+        </section>
+
+        {/* Authentication Section */}
+        <section className="docs-section">
+          <h2>Authentication</h2>
+          <p>
+            All API requests require authentication using an API key. Include your API key 
+            in the request headers.
+          </p>
+          <div className="code-block">
+            <pre><code>{`curl -H "Authorization: Bearer YOUR_API_KEY" \\
+     -H "Content-Type: application/json" \\
+     https://api.astralbridge.io/v1/quote`}</code></pre>
+          </div>
+          <div className="auth-info">
+            <h4>Rate Limits:</h4>
             <ul>
-              <li><strong>Multi-signature control:</strong> All bridge operations require multiple authorized signatures.</li>
-              <li><strong>Threshold signatures:</strong> Distributed key generation means no single party has complete control.</li>
-              <li><strong>Oracle verification:</strong> External oracles validate cross-chain state.</li>
-              <li><strong>Rate limiting:</strong> Maximum transfer amounts protect against large exploits.</li>
-              <li><strong>Audited contracts:</strong> All smart contracts undergo rigorous security audits.</li>
+              <li>100 requests per minute for authenticated users</li>
+              <li>10 requests per minute for unauthenticated requests</li>
+              <li>Rate limit headers included in all responses</li>
             </ul>
+          </div>
+        </section>
+
+        {/* Bridge API Section */}
+        <section className="docs-section">
+          <h2>Bridge API</h2>
+          
+          <div className="endpoint-group">
+            <h3>Get Quote</h3>
+            <div className="endpoint-details">
+              <span className="method get">GET</span>
+              <span className="path">/bridge/quote</span>
+            </div>
+            <p>Get a quote for bridging assets between chains.</p>
             
-            <h2>Token Representation</h2>
-            <p>
-              Tokens bridged to another blockchain are typically represented in one of two ways:
-            </p>
-            
-            <h3>Wrapped Tokens</h3>
-            <p>
-              Most bridged assets exist as "wrapped" versions on the destination chain, backed 1:1 by the locked assets on the source chain. These follow the token standard of the destination chain (e.g., ERC-20 on Ethereum).
-            </p>
-            
-            <h3>Native Tokens</h3>
-            <p>
-              For tokens that naturally exist on multiple chains (like USDC), Astral Bridge can deliver the native version rather than a wrapped token, providing better liquidity and integration.
-            </p>
-          </article>
-        )}
-        
-        {/* Add more content sections for other topics */}
-        
-        {(activeTopic !== 'intro' && activeTopic !== 'how-it-works') && (
-          <article className="placeholder-content">
-            <h1>{activeTopic.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
-            <p>This documentation section is coming soon.</p>
-          </article>
-        )}
+            <h4>Parameters:</h4>
+            <div className="params-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>fromChain</td>
+                    <td>string</td>
+                    <td>Yes</td>
+                    <td>Source chain ID</td>
+                  </tr>
+                  <tr>
+                    <td>toChain</td>
+                    <td>string</td>
+                    <td>Yes</td>
+                    <td>Destination chain ID</td>
+                  </tr>
+                  <tr>
+                    <td>token</td>
+                    <td>string</td>
+                    <td>Yes</td>
+                    <td>Token contract address</td>
+                  </tr>
+                  <tr>
+                    <td>amount</td>
+                    <td>string</td>
+                    <td>Yes</td>
+                    <td>Amount to bridge (in wei)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Example Request:</h4>
+            <div className="code-block">
+              <pre><code>{`curl "https://api.astralbridge.io/v1/bridge/quote?fromChain=1&toChain=56&token=0xA0b86a33E6Cc8&amount=1000000000000000000" \\
+     -H "Authorization: Bearer YOUR_API_KEY"`}</code></pre>
+            </div>
+
+            <h4>Example Response:</h4>
+            <div className="code-block">
+              <pre><code>{`{
+  "quoteId": "quote_123456789",
+  "fromChain": "1",
+  "toChain": "56",
+  "token": "0xA0b86a33E6Cc8",
+  "amount": "1000000000000000000",
+  "estimatedFee": "5000000000000000",
+  "estimatedTime": "300",
+  "route": {
+    "steps": [
+      {
+        "protocol": "astral",
+        "fromChain": "1",
+        "toChain": "56"
+      }
+    ]
+  },
+  "expiresAt": "2024-12-07T12:35:00Z"
+}`}</code></pre>
+            </div>
+          </div>
+
+          <div className="endpoint-group">
+            <h3>Initiate Bridge</h3>
+            <div className="endpoint-details">
+              <span className="method post">POST</span>
+              <span className="path">/bridge/initiate</span>
+            </div>
+            <p>Initiate a bridge transaction using a valid quote.</p>
+
+            <h4>Request Body:</h4>
+            <div className="code-block">
+              <pre><code>{`{
+  "quoteId": "quote_123456789",
+  "recipient": "0x742d35Cc6634C0532925a3b8D6C8e4C1C0F...",
+  "slippage": "0.5"
+}`}</code></pre>
+            </div>
+
+            <h4>Example Response:</h4>
+            <div className="code-block">
+              <pre><code>{`{
+  "transactionId": "tx_987654321",
+  "status": "pending",
+  "txHash": "0x1234567890abcdef...",
+  "estimatedCompletion": "2024-12-07T12:40:00Z"
+}`}</code></pre>
+            </div>
+          </div>
+
+          <div className="endpoint-group">
+            <h3>Transaction Status</h3>
+            <div className="endpoint-details">
+              <span className="method get">GET</span>
+              <span className="path">/bridge/status/:transactionId</span>
+            </div>
+            <p>Get the current status of a bridge transaction.</p>
+
+            <h4>Example Response:</h4>
+            <div className="code-block">
+              <pre><code>{`{
+  "transactionId": "tx_987654321",
+  "status": "completed",
+  "fromTxHash": "0x1234567890abcdef...",
+  "toTxHash": "0xfedcba0987654321...",
+  "completedAt": "2024-12-07T12:38:45Z"
+}`}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        {/* Webhooks Section */}
+        <section className="docs-section">
+          <h2>Webhooks</h2>
+          <p>
+            Configure webhooks to receive real-time notifications about bridge transaction updates.
+          </p>
+
+          <h3>Webhook Payload Example:</h3>
+          <div className="code-block">
+            <pre><code>{`{
+  "event": "bridge.completed",
+  "transactionId": "tx_987654321",
+  "timestamp": "2024-12-07T12:38:45Z",
+  "data": {
+    "status": "completed",
+    "fromChain": "1",
+    "toChain": "56",
+    "amount": "1000000000000000000",
+    "recipient": "0x742d35Cc6634C0532925a3b8D6C8e4C1C0F...",
+    "fromTxHash": "0x1234567890abcdef...",
+    "toTxHash": "0xfedcba0987654321..."
+  }
+}`}</code></pre>
+          </div>
+
+          <h3>Webhook Security:</h3>
+          <p>All webhook payloads are signed with your webhook secret. Verify the signature using:</p>
+          <div className="code-block">
+            <pre><code>{`const crypto = require('crypto');
+
+function verifyWebhook(payload, signature, secret) {
+  const hmac = crypto.createHmac('sha256', secret);
+  hmac.update(payload);
+  const digest = hmac.digest('hex');
+  return signature === \`sha256=\${digest}\`;
+}`}</code></pre>
+          </div>
+        </section>
+
+        {/* SDKs Section */}
+        <section className="docs-section">
+          <h2>SDKs</h2>
+          <p>Official SDKs are available for popular programming languages:</p>
+
+          <div className="sdk-grid">
+            <div className="sdk-card">
+              <h4>JavaScript/TypeScript</h4>
+              <div className="code-block">
+                <pre><code>{`npm install @astral/bridge-sdk
+
+import { AstralBridge } from '@astral/bridge-sdk';
+
+const bridge = new AstralBridge({
+  apiKey: 'your-api-key'
+});
+
+const quote = await bridge.getQuote({
+  fromChain: '1',
+  toChain: '56',
+  token: '0xA0b86a33E6Cc8',
+  amount: '1000000000000000000'
+});`}</code></pre>
+              </div>
+            </div>
+
+            <div className="sdk-card">
+              <h4>Python</h4>
+              <div className="code-block">
+                <pre><code>{`pip install astral-bridge
+
+from astral_bridge import AstralBridge
+
+bridge = AstralBridge(api_key='your-api-key')
+
+quote = bridge.get_quote(
+    from_chain='1',
+    to_chain='56',
+    token='0xA0b86a33E6Cc8',
+    amount='1000000000000000000'
+)`}</code></pre>
+              </div>
+            </div>
+
+            <div className="sdk-card">
+              <h4>Go</h4>
+              <div className="code-block">
+                <pre><code>{`go get github.com/astral/bridge-go
+
+import "github.com/astral/bridge-go"
+
+client := bridge.NewClient("your-api-key")
+
+quote, err := client.GetQuote(&bridge.QuoteRequest{
+    FromChain: "1",
+    ToChain:   "56",
+    Token:     "0xA0b86a33E6Cc8",
+    Amount:    "1000000000000000000",
+})`}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Error Handling Section */}
+        <section className="docs-section">
+          <h2>Error Handling</h2>
+          <p>The API uses conventional HTTP response codes to indicate success or failure.</p>
+
+          <div className="error-codes">
+            <h4>Common Error Codes:</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>400</td>
+                  <td>Bad Request - Invalid parameters</td>
+                </tr>
+                <tr>
+                  <td>401</td>
+                  <td>Unauthorized - Invalid API key</td>
+                </tr>
+                <tr>
+                  <td>429</td>
+                  <td>Rate Limited - Too many requests</td>
+                </tr>
+                <tr>
+                  <td>500</td>
+                  <td>Internal Server Error</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Error Response Format:</h4>
+          <div className="code-block">
+            <pre><code>{`{
+  "error": {
+    "code": "INVALID_CHAIN",
+    "message": "The specified chain is not supported",
+    "details": {
+      "supportedChains": ["1", "56", "137", "42161"]
+    }
+  }
+}`}</code></pre>
+          </div>
+
+          <div className="best-practices">
+            <h4>Best Practices:</h4>
+            <ul>
+              <li>Always check response status codes</li>
+              <li>Implement exponential backoff for retries</li>
+              <li>Handle rate limiting gracefully</li>
+              <li>Validate quotes before initiating transactions</li>
+              <li>Use webhooks for transaction status updates</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Support Section */}
+        <section className="docs-section">
+          <h2>Support</h2>
+          <p>Need help? Reach out to our developer support team:</p>
+          <div className="support-info">
+            <ul>
+              <li><strong>Email:</strong> developers@astralbridge.io</li>
+              <li><strong>Discord:</strong> Join our developer community</li>
+              <li><strong>GitHub:</strong> Report issues and contribute</li>
+              <li><strong>Documentation:</strong> Additional guides and tutorials</li>
+            </ul>
+          </div>
+        </section>
       </div>
-    </main>
+    </div>
   );
 };
 
-export default Docs; 
+export default Docs;

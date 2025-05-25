@@ -5,7 +5,7 @@ import './styles.css';
 // Pages
 import Home from './pages/Home';
 import Docs from './pages/Docs';
-import Networks from './pages/Networks';
+import About from './pages/About';
 
 // Components
 import Header from './components/Header';
@@ -24,11 +24,10 @@ function App() {
   return (
     <Router>
       <Particles />
-      <Header />
-      <Routes>
+      <Header />      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/docs" element={<Docs />} />
-        <Route path="/networks" element={<Networks />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </Router>

@@ -20,8 +20,6 @@ const Footer: React.FC = () => {
             <h4>Product</h4>
             <ul>
               <li><Link to="/">Bridge</Link></li>
-              <li><Link to="/networks">Networks</Link></li>
-              <li><Link to="/tokens">Tokens</Link></li>
             </ul>
           </div>
           
@@ -29,17 +27,13 @@ const Footer: React.FC = () => {
             <h4>Resources</h4>
             <ul>
               <li><Link to="/docs">Documentation</Link></li>
-              <li><Link to="/api">API</Link></li>
-              <li><Link to="/statistics">Statistics</Link></li>
+              <li><Link to="/docs">API</Link></li>
             </ul>
           </div>
-          
-          <div className="footer-column">
+            <div className="footer-column">
             <h4>Company</h4>
             <ul>
               <li><Link to="/about">About</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
             </ul>
           </div>
         </div>

@@ -23,7 +23,6 @@ const Header: React.FC = () => {
       <nav>
         <ul className="nav-links">
           <li><Link to="/docs" className="nav-link">Docs</Link></li>
-          <li><Link to="/networks" className="nav-link">Networks</Link></li>
         </ul>
         <button className="connect-wallet">Connect Wallet</button>
       </nav>
