@@ -11,6 +11,7 @@ import About from './pages/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
+import { WalletProvider } from './components/WalletProvider';
 
 // Token data
 import { initializeTokenPrices } from './data/tokenData';
@@ -20,17 +21,19 @@ function App() {
   useEffect(() => {
     initializeTokenPrices();
   }, []);
-
   return (
-    <Router>
-      <Particles />
-      <Header />      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/docs" element={<Docs />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <WalletProvider>
+      <Router>
+        <Particles />
+        <Header />      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/docs" element={<Docs />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </WalletProvider>
   );
 }
 

