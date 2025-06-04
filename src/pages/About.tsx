@@ -41,7 +41,7 @@ const About: React.FC = () => {
               enabling users to transfer assets freely and securely across multiple networks.
             </p>
             <p>
-              Founded in 2023, we've built the most advanced cross-chain bridge technology that combines 
+              Founded in 2025, we've built the most advanced cross-chain bridge technology that combines 
               lightning-fast speeds, bank-grade security, and the lowest fees in the industry.
             </p>
           </div>

@@ -105,7 +105,7 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
           'Invalid transaction signature detected',
           'Transaction reverted: slippage tolerance exceeded',
           'Cross-chain bridge temporarily unavailable, Please try again later',
-          'Smart contract execution failed',
+          'Smart contract execution fai led',
           'Transaction expired: block confirmation timeout',
           'Bridge oracle service temporarily offline'
         ];

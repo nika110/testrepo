@@ -361,8 +361,6 @@ quote, err := client.GetQuote(&bridge.QuoteRequest{
           <div className="support-info">
             <ul>
               <li><strong>Email:</strong> developers@astralbridge.io</li>
-              <li><strong>Discord:</strong> Join our developer community</li>
-              <li><strong>GitHub:</strong> Report issues and contribute</li>
               <li><strong>Documentation:</strong> Additional guides and tutorials</li>
             </ul>
           </div>
