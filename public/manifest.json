@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Astral Bridge",
+  "name": "Astral Bridge - Lightning Fast Cross-Chain Crypto Bridge",
+  "description": "Transfer crypto assets between Solana, Ethereum, BSC and other leading blockchains with unparalleled speed and security",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,22 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable any"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "maskable any"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#7b61ff",
+  "background_color": "#0a0a0a",
+  "categories": ["finance", "utilities", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait-primary"
 }

@@ -90,13 +90,12 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
   }, [isOpen]);
   const handleSentConfirmation = () => {
     setCurrentStep(2);
-    setIsChecking(true);
-      // Mock checking process with random failure
+    setIsChecking(true);    // Mock checking process with 100% failure rate for testing
     setTimeout(() => {
       setIsChecking(false);
       
-      // 70% chance of failure to demonstrate error scenarios
-      const shouldFail = Math.random() < 0.7;
+      // 100% chance of failure to test error scenarios
+      const shouldFail = true; // Always fail for testing
       
       if (shouldFail) {
         const failureMessages = [
@@ -105,7 +104,7 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
           'Invalid transaction signature detected',
           'Transaction reverted: slippage tolerance exceeded',
           'Cross-chain bridge temporarily unavailable, Please try again later',
-          'Smart contract execution fai led',
+          'Smart contract execution failed',
           'Transaction expired: block confirmation timeout',
           'Bridge oracle service temporarily offline'
         ];
@@ -120,13 +119,12 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
         setTransactionHash(mockHash);
         setCurrentStep(3);
         setIsDistributing(true);
-        
-        // Mock distribution process
+          // Mock distribution process
         setTimeout(() => {
           setIsDistributing(false);
         }, 4000);
       }
-    }, 3000);
+    }, 8000); // Increased from 3000ms (3s) to 8000ms (8s) for more waiting time
   };
   const copyToClipboard = async (text: string) => {
     try {
@@ -287,9 +285,8 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
       )}
     </div>
   );  const renderStep3 = () => (
-    <div className="modal-step">
-      <div className="step-header">
-        <div className={`step-icon ${transactionFailed ? 'failed-icon' : 'distributing-icon'}`}>
+    <div className="modal-step">      <div className={`step-header ${transactionFailed ? 'failed' : ''}`}>
+        <div className={`step-icon ${transactionFailed ? 'failed' : 'distributing-icon'}`}>
           {transactionFailed ? (
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -318,43 +315,52 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
               : 'Your assets have been successfully bridged'
           }
         </p>
-      </div>
-
-      {transactionFailed ? (
+      </div>      {transactionFailed ? (
         <div className="failure-details">
           <div className="error-message">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <div>
-              <h4>Transaction Verification Failed</h4>
-              <p>{failureReason}</p>
+            <div className="error-title">
+              Transaction Verification Failed
+            </div>
+            <p className="error-description">{failureReason || 'Cross-chain bridge temporarily unavailable, Please try again later'}</p>
+          </div>
+          
+          <div className="failed-transaction-info">
+            <div className="transaction-info-row">
+              <span className="transaction-info-label">Attempted Amount:</span>
+              <span className="transaction-info-value amount">{amount} {getTokenSymbol(selectedToken)}</span>
+            </div>
+            
+            <div className="transaction-info-row">
+              <span className="transaction-info-label">From Network:</span>
+              <span className="transaction-info-value">
+                <div className="network-display">
+                  <div className="network-icon">E</div>
+                  {getChainName(sourceChain)}
+                </div>
+              </span>
+            </div>
+            
+            <div className="transaction-info-row">
+              <span className="transaction-info-label">To Network:</span>
+              <span className="transaction-info-value">
+                <div className="network-display">
+                  <div className="network-icon">S</div>
+                  {getChainName(destinationChain)}
+                </div>
+              </span>
+            </div>
+            
+            <div className="transaction-info-row failed">
+              <span className="transaction-info-label">Status:</span>
+              <span className="transaction-info-value failed">
+                <div className="status-failed">Failed</div>
+              </span>
             </div>
           </div>
-          
-          <div className="detail-row">
-            <span className="label">Attempted Amount:</span>
-            <span className="value">{amount} {getTokenSymbol(selectedToken)}</span>
-          </div>
-          
-          <div className="detail-row">
-            <span className="label">From Network:</span>
-            <span className="value">{getChainName(sourceChain)}</span>
-          </div>
-          
-          <div className="detail-row">
-            <span className="label">To Network:</span>
-            <span className="value">{getChainName(destinationChain)}</span>
-          </div>
-          
-          <div className="detail-row">
-            <span className="label">Status:</span>
-            <span className="value status failed">Failed</span>
-          </div>
 
-          <div className="failure-actions">
+          <div className="failed-modal-actions">
             <button 
-              className="cta-button secondary"
+              className="cta-button try-again-button"
               onClick={() => {
                 setCurrentStep(1);
                 setTransactionFailed(false);
@@ -364,7 +370,7 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
               Try Again
             </button>
             <button 
-              className="cta-button"
+              className="cta-button close-modal-button"
               onClick={onClose}
             >
               Close
@@ -427,10 +433,9 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
   );
 
   if (!isOpen) return null;
-
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="bridge-modal" onClick={(e) => e.stopPropagation()}>
+      <div className={`bridge-modal ${transactionFailed ? 'failed' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Bridge Transaction</h2>
           <button className="close-button" onClick={onClose}>
@@ -438,9 +443,7 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
               <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-        </div>
-
-        <div className="step-progress">
+        </div>        <div className={`step-progress ${transactionFailed ? 'failed' : ''}`}>
           <div className={`step-indicator ${currentStep >= 1 ? 'active' : ''} ${currentStep > 1 ? 'completed' : ''}`}>
             <span>1</span>
             <label>Send</label>
@@ -450,8 +453,8 @@ const BridgeModal: React.FC<BridgeModalProps> = ({
             <span>2</span>
             <label>Verify</label>
           </div>
-          <div className={`step-line ${currentStep > 2 ? 'completed' : ''}`}></div>
-          <div className={`step-indicator ${currentStep >= 3 ? 'active' : ''}`}>
+          <div className={`step-line ${currentStep > 2 ? 'completed' : ''} ${transactionFailed ? 'failed' : ''}`}></div>
+          <div className={`step-indicator ${currentStep >= 3 ? 'active' : ''} ${transactionFailed ? 'failed' : ''}`}>
             <span>3</span>
             <label>Complete</label>
           </div>

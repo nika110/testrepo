@@ -2671,6 +2671,379 @@ footer {
   font-weight: 600;
 }
 
+/* ==============================================
+   WALLET MODAL STYLES
+   ============================================== */
+
+/* Wallet Modal Container */
+.wallet-modal {
+  background: rgba(20, 20, 30, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease-out;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Wallet Modal Header */
+.wallet-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-24) var(--space-24) 0;
+  margin-bottom: var(--space-24);
+}
+
+.wallet-modal .modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wallet-modal .close-button {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-modal .close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+  transform: rotate(90deg);
+}
+
+.wallet-modal .close-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Wallet Modal Content */
+.wallet-modal-content {
+  padding: 0 var(--space-24) var(--space-24);
+}
+
+.wallet-description {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-24);
+  text-align: center;
+}
+
+/* Wallet Error Styling */
+.wallet-error {
+  background: rgba(255, 87, 87, 0.1);
+  border: 1px solid rgba(255, 87, 87, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: #ff9999;
+  font-size: 0.9rem;
+  position: relative;
+  animation: errorSlideIn 0.3s ease-out;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wallet-error svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
+.wallet-error span {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.error-dismiss {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.error-dismiss:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+.error-dismiss svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Wallet Options */
+.wallet-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.wallet-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-20);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.wallet-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(123, 97, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.wallet-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(123, 97, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(123, 97, 255, 0.15);
+}
+
+.wallet-option:hover::before {
+  left: 100%;
+}
+
+.wallet-option:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(123, 97, 255, 0.2);
+}
+
+/* Wallet Icon */
+.wallet-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.wallet-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.metamask-icon {
+  background: linear-gradient(135deg, rgba(246, 133, 27, 0.2), rgba(228, 118, 27, 0.2));
+}
+
+.phantom-icon {
+  background: linear-gradient(135deg, rgba(171, 104, 255, 0.2), rgba(144, 76, 255, 0.2));
+}
+
+/* Wallet Info */
+.wallet-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wallet-info h3 {
+  margin: 0 0 var(--space-4);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.wallet-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.3;
+}
+
+/* Wallet Arrow */
+.wallet-arrow {
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+  transition: all var(--transition-fast);
+  transform: translateX(0);
+}
+
+.wallet-option:hover .wallet-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--color-purple);
+}
+
+.wallet-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Wallet Footer */
+.wallet-footer {
+  padding-top: var(--space-16);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.wallet-footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.wallet-footer a {
+  color: var(--color-purple);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.wallet-footer a:hover {
+  color: var(--color-cyan);
+  text-decoration: underline;
+}
+
+/* Responsive Design for Wallet Modal */
+@media (max-width: 768px) {
+  .wallet-modal {
+    max-width: calc(100vw - 32px);
+    margin: 16px;
+  }
+  
+  .wallet-modal .modal-header {
+    padding: var(--space-20) var(--space-20) 0;
+    margin-bottom: var(--space-20);
+  }
+  
+  .wallet-modal .modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .wallet-modal-content {
+    padding: 0 var(--space-20) var(--space-20);
+  }
+  
+  .wallet-option {
+    padding: var(--space-16);
+    gap: var(--space-12);
+  }
+  
+  .wallet-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .wallet-icon img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .wallet-info h3 {
+    font-size: 1rem;
+  }
+  
+  .wallet-info p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wallet-modal {
+    max-width: calc(100vw - 16px);
+    margin: 8px;
+    border-radius: var(--radius-md);
+  }
+  
+  .wallet-options {
+    gap: var(--space-12);
+  }
+  
+  .wallet-option {
+    padding: var(--space-14);
+    gap: var(--space-10);
+  }
+  
+  .wallet-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .wallet-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .wallet-info h3 {
+    font-size: 0.95rem;
+  }
+  
+  .wallet-info p {
+    font-size: 0.75rem;
+  }
+  
+  .wallet-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /* ============================================
    ABOUT PAGE STYLES
    ============================================ */
@@ -2710,6 +3083,7 @@ footer {
   margin: 0 auto var(--space-48);
   color: var(--color-text-secondary);
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .about-section {
@@ -3024,1060 +3398,741 @@ footer {
   }
 }
 
-/* ==============================================
-   NETWORKS PAGE STYLES
-   ============================================== */
+/* ============================================= */
+/* FAQ PAGE STYLES */
+/* ============================================= */
 
-.networks-page {
-  min-height: 100vh;
-  background: var(--color-background);
-  padding: var(--space-32) 0;
-}
-
-.networks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--space-32);
-  padding: var(--space-32);
-  max-width: 1400px;
+/* FAQ Page Container */
+.faq-page {
+  padding: var(--space-64) var(--space-48);
+  max-width: 1200px;
   margin: 0 auto;
+  min-height: calc(100vh - 120px);
 }
 
-.network-card {
-  background: rgba(255, 255, 255, 0.03);
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
+}
+
+/* FAQ Header Section */
+.faq-header {
+  text-align: center;
+  margin-bottom: var(--space-64);
+  padding: var(--space-48) 0;
+}
+
+.faq-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--space-24);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.faq-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* FAQ Container */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  margin-bottom: var(--space-64);
+}
+
+/* FAQ Item */
+.faq-item {
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(24px) saturate(180%);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-32);
   transition: all var(--transition-medium);
-  cursor: pointer;
   position: relative;
   overflow: hidden;
-  isolation: isolate;
 }
 
-.network-card::before {
+.faq-item::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from 135deg at 50% 50%,
-    var(--color-purple),
-    var(--color-cyan),
-    var(--color-magenta),
-    var(--color-purple)
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(123, 97, 255, 0.1),
+    rgba(0, 247, 255, 0.05),
+    rgba(255, 59, 255, 0.1)
   );
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: -1;
   opacity: 0;
   transition: opacity var(--transition-medium);
+  z-index: -1;
 }
 
-.network-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 247, 255, 0.1);
-}
-
-.network-card:hover::before {
-  opacity: 0.6;
-}
-
-.network-card.selected {
-  background: rgba(0, 247, 255, 0.05);
-  border-color: var(--color-cyan);
+.faq-item:hover {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: rgba(123, 97, 255, 0.3);
 }
 
-.network-card.selected::before {
+.faq-item:hover::before {
   opacity: 1;
 }
 
-.network-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-20);
-  margin-bottom: var(--space-24);
-}
-
-.chain-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.chain-icon::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from 0deg,
-    var(--color-purple),
-    var(--color-cyan),
-    var(--color-magenta),
-    var(--color-purple)
-  );
-  border-radius: 50%;
-  opacity: 0.1;
-  z-index: -1;
-}
-
-.network-title h2 {
-  margin: 0 0 var(--space-8) 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.network-type {
-  color: var(--color-cyan);
-  font-size: 0.875rem;
+/* FAQ Question */
+.faq-question {
+  font-family: var(--font-primary);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--space-4);
-}
-
-.network-status {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-}
-
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-success);
-  box-shadow: 0 0 8px rgba(76, 217, 100, 0.5);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-}
-
-.network-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-16);
-  margin-bottom: var(--space-24);
-  padding: var(--space-20);
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.network-stats .stat-item {
-  text-align: center;
-}
-
-.network-stats .stat-number {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-4);
-}
-
-.network-stats .stat-label {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.network-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition-medium) ease-out;
-}
-
-.network-card.selected .network-details {
-  max-height: 800px;
-  transition: max-height var(--transition-medium) ease-in;
-}
-
-.network-description {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-24);
-  padding: var(--space-20);
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: var(--radius-md);
-  border-left: 3px solid var(--color-cyan);
-}
-
-.tech-specs {
-  margin-bottom: var(--space-24);
-}
-
-.tech-specs h4 {
   color: var(--color-text-primary);
   margin-bottom: var(--space-16);
-  font-size: 1.1rem;
-  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.specs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-12);
+/* FAQ Answer */
+.faq-answer {
+  margin-top: var(--space-16);
 }
 
-.spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-12);
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.spec-label {
+.faq-answer p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
   color: var(--color-text-secondary);
-  font-size: 0.875rem;
+  margin-bottom: 0;
+  font-weight: 400;
 }
 
-.spec-value {
-  color: var(--color-text-primary);
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-.supported-tokens {
-  margin-bottom: var(--space-24);
-}
-
-.supported-tokens h4 {
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-16);
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.token-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8);
-}
-
-.token-tag {
-  padding: var(--space-6) var(--space-12);
-  background: rgba(0, 247, 255, 0.1);
-  border: 1px solid rgba(0, 247, 255, 0.2);
-  border-radius: var(--radius-sm);
-  color: var(--color-cyan);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.bridge-info {
-  padding: var(--space-20);
-  background: rgba(123, 97, 255, 0.1);
-  border: 1px solid rgba(123, 97, 255, 0.2);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-20);
-}
-
-.bridge-info h5 {
-  color: var(--color-purple);
-  margin-bottom: var(--space-12);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.bridge-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.bridge-features li {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: var(--space-8);
-  padding-left: var(--space-20);
-  position: relative;
-}
-
-.bridge-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-success);
-  font-weight: bold;
-}
-
-.networks-features {
-  padding: var(--space-64) var(--space-32);
-  background: rgba(255, 255, 255, 0.01);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.networks-features .section-title {
+/* FAQ Support Section */
+.faq-support {
   text-align: center;
-  margin-bottom: var(--space-48);
-  color: var(--color-text-primary);
-}
-
-.networks-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-32);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.networks-feature-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: var(--space-32);
-  text-align: center;
-  transition: all var(--transition-medium);
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.networks-feature-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from 90deg at 50% 50%,
-    var(--color-purple),
-    var(--color-cyan),
-    var(--color-magenta),
-    var(--color-purple)
-  );
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity var(--transition-medium);
-}
-
-.networks-feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 247, 255, 0.1);
-}
-
-.networks-feature-card:hover::before {
-  opacity: 0.6;
-}
-
-.networks-feature-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto var(--space-24);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-48) var(--space-32);
+  margin-top: var(--space-64);
   position: relative;
   overflow: hidden;
 }
 
-.networks-feature-icon::after {
+.faq-support::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from 0deg,
-    var(--color-purple),
-    var(--color-cyan),
-    var(--color-magenta),
-    var(--color-purple)
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(123, 97, 255, 0.05),
+    rgba(0, 247, 255, 0.03),
+    rgba(255, 59, 255, 0.05)
   );
-  border-radius: 50%;
-  opacity: 0.2;
   z-index: -1;
 }
 
-.networks-feature-card h3 {
-  color: var(--color-text-primary);
+.support-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
   margin-bottom: var(--space-16);
-  font-size: 1.25rem;
-  font-weight: 600;
+  background: linear-gradient(to right, var(--color-purple), var(--color-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
-.networks-feature-card p {
+.support-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--color-text-secondary);
+  margin-bottom: var(--space-32);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
-  margin: 0;
 }
 
-/* Responsive Design for Networks Page */
-@media (max-width: 1024px) {
-  .networks-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-24);
-    padding: var(--space-24);
-  }
-  
-  .specs-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .networks-features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-24);
-  }
+/* Support Buttons */
+.support-buttons {
+  display: flex;
+  gap: var(--space-16);
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+.discord-button {
+  background: rgba(88, 101, 242, 0.2);
+  border-color: rgba(88, 101, 242, 0.4);
+  color: var(--color-text-primary);
+}
+
+.discord-button::before {
+  background: linear-gradient(to right, #5865f2, #7289da);
+}
+
+.discord-button:hover {
+  border-color: #5865f2;
+  box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+}
+
+.telegram-button {
+  background: rgba(0, 136, 204, 0.2);
+  border-color: rgba(0, 136, 204, 0.4);
+  color: var(--color-text-primary);
+}
+
+.telegram-button::before {
+  background: linear-gradient(to right, #0088cc, #229ed9);
+}
+
+.telegram-button:hover {
+  border-color: #0088cc;
+  box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+}
+
+/* Responsive Design for FAQ Page */
 @media (max-width: 768px) {
-  .networks-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-20);
-    padding: var(--space-20);
+  .faq-page {
+    padding: var(--space-32) var(--space-24);
   }
   
-  .network-card {
+  .container {
+    padding: 0 var(--space-16);
+  }
+  
+  .faq-header {
+    margin-bottom: var(--space-48);
+    padding: var(--space-32) 0;
+  }
+  
+  .faq-item {
     padding: var(--space-24);
   }
   
-  .network-header {
+  .faq-container {
     gap: var(--space-16);
   }
   
-  .chain-icon {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
+  .faq-support {
+    padding: var(--space-32) var(--space-24);
+    margin-top: var(--space-48);
   }
   
-  .network-title h2 {
-    font-size: 1.25rem;
+  .support-buttons {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .network-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-12);
-    padding: var(--space-16);
-  }
-  
-  .networks-features {
-    padding: var(--space-48) var(--space-20);
-  }
-  
-  .networks-features-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-20);
-  }
-  
-  .networks-feature-card {
-    padding: var(--space-24);
+  .support-buttons .cta-button {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
 @media (max-width: 480px) {
-  .network-card {
-    padding: var(--space-20);
+  .faq-page {
+    padding: var(--space-24) var(--space-16);
   }
   
-  .network-header {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-12);
+  .faq-item {
+    padding: var(--space-16);
   }
   
-  .chain-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 18px;
+  .faq-support {
+    padding: var(--space-24) var(--space-16);
   }
   
-  .network-stats {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-    padding: var(--space-12);
+  .faq-question {
+    font-size: 1.125rem;
   }
   
-  .networks-feature-card {
-    padding: var(--space-20);
-  }
-  
-  .networks-feature-icon {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
+  .faq-answer p {
+    font-size: 1rem;
   }
 }
 
-/* =================================
-   WALLET MODAL & CONNECTION STYLES
-   ================================= */
+/* Accessibility Enhancements */
+.faq-item:focus-within {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
 
-/* Connect Wallet Button */
-.connect-wallet {
-  background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
-  border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+.faq-question:focus {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .faq-item {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .faq-question {
+    color: #ffffff;
+  }
+  
+  .faq-answer p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .faq-item {
+    transition: none;
+  }
+  
+  .faq-item:hover {
+    transform: none;
+  }
+  
+  .cta-button::before {
+    transition: none;
+  }
+}
+
+/* Print styles for FAQ page */
+@media print {
+  .faq-page {
+    padding: 0;
+    background: white;
+    color: black;
+  }
+  
+  .faq-item {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  .faq-question {
+    color: black;
+  }
+  
+  .faq-answer p {
+    color: black;
+  }
+  
+  .support-buttons {
+    display: none;
+  }
+}
+
+/* ==============================================
+   BRIDGE FAILED MODAL STYLES
+   ============================================== */
+
+/* Bridge Failed Modal - Error State */
+.bridge-modal.failed {
+  border: 1px solid rgba(255, 150, 150, 0.2);
+  background: rgba(20, 20, 30, 0.95);
+}
+
+.bridge-modal.failed .modal-header {
+  background: rgba(255, 150, 150, 0.05);
+  border-bottom: 1px solid rgba(255, 150, 150, 0.1);
+}
+
+/* Failed Step Icon */
+.step-icon.failed {
+  background: linear-gradient(45deg, rgba(255, 150, 150, 0.8), rgba(255, 120, 120, 0.9));
+  box-shadow: 0 0 30px rgba(255, 150, 150, 0.3);
+  animation: pulse-error 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-error {
+  from {
+    box-shadow: 0 0 20px rgba(255, 150, 150, 0.2);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255, 150, 150, 0.4);
+  }
+}
+
+.step-icon.failed svg {
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+/* Failed Step Header */
+.step-header.failed h3 {
+  color: rgba(255, 150, 150, 0.9);
+  font-weight: 700;
+}
+
+.step-header.failed p {
+  color: rgba(255, 150, 150, 0.7);
+}
+
+/* Failed Transaction Details */
+.transaction-details.failed {
+  background: rgba(255, 150, 150, 0.03);
+  border: 1px solid rgba(255, 150, 150, 0.1);
   position: relative;
   overflow: hidden;
 }
 
-.connect-wallet::before {
+.transaction-details.failed::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 150, 150, 0.6), rgba(255, 120, 120, 0.8));
+}
+
+/* Failed Status Indicator */
+.status-failed {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: rgba(255, 150, 150, 0.1);
+  color: rgba(255, 150, 150, 0.9);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 150, 150, 0.2);
+}
+
+.status-failed::before {
+  content: '✕';
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Error Message Section */
+.error-message {
+  background: rgba(255, 150, 150, 0.05);
+  border: 1px solid rgba(255, 150, 150, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-20);
+  margin: var(--space-20) 0;
+  text-align: center;
+}
+
+.error-title {
+  color: rgba(255, 150, 150, 0.9);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.error-title::before {
+  content: '⚠';
+  font-size: 1.2rem;
+  color: rgba(255, 180, 120, 0.8);
+}
+
+.error-description {
+  color: rgba(255, 150, 150, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Failed Transaction Info */
+.failed-transaction-info {
+  display: grid;
+  gap: var(--space-16);
+  margin: var(--space-24) 0;
+}
+
+.transaction-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-12) var(--space-16);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.transaction-info-row.failed {
+  background: rgba(255, 150, 150, 0.03);
+  border-color: rgba(255, 150, 150, 0.08);
+}
+
+.transaction-info-label {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.transaction-info-value {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.transaction-info-value.failed {
+  color: rgba(255, 150, 150, 0.9);
+}
+
+.transaction-info-value.amount {
+  color: var(--color-cyan);
+  font-weight: 700;
+}
+
+/* Network Display */
+.network-display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-weight: 600;
+}
+
+.network-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: white;
+}
+
+/* Failed Modal Action Buttons */
+.failed-modal-actions {
+  display: flex;
+  gap: var(--space-16);
+  padding: var(--space-24) var(--space-32) var(--space-32);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.failed-modal-actions .cta-button {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-16) var(--space-24);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Try Again Button */
+.try-again-button {
+  background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+  border: none;
+  color: white;
+}
+
+.try-again-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
   background: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
-  opacity: 0;
-  transition: opacity var(--transition-fast);
+  z-index: -1;
+  transition: width var(--transition-medium);
 }
 
-.connect-wallet:hover::before {
-  opacity: 1;
+.try-again-button:hover::before {
+  width: 100%;
 }
 
-.connect-wallet:hover {
+.try-again-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(123, 97, 255, 0.4);
 }
 
-/* Connected Wallet */
-.wallet-connected {
-  position: relative;
+/* Close Button */
+.close-modal-button {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(10px);
-}
-
-.wallet-connected:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 247, 255, 0.3);
-}
-
-.wallet-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.wallet-address {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-text-primary);
 }
 
-.dropdown-arrow {
-  width: 16px;
-  height: 16px;
-  color: var(--color-text-secondary);
-  transition: transform var(--transition-fast);
-  margin-left: 4px;
-}
-
-.wallet-connected:hover .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-/* Account Menu */
-.account-menu {
+.close-modal-button::before {
+  content: '';
   position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 16px;
-  min-width: 280px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px);
-  z-index: 1000;
-}
-
-.account-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.wallet-type {
-  font-weight: 600;
-  color: var(--color-text-primary);
-  font-size: 0.9rem;
-  margin-bottom: 4px;
-}
-
-.full-address {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  word-break: break-all;
-  line-height: 1.4;
-}
-
-.disconnect-button {
-  width: 100%;
-  background: rgba(255, 59, 95, 0.1);
-  border: 1px solid rgba(255, 59, 95, 0.3);
-  color: #ff3b5f;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.disconnect-button:hover {
-  background: rgba(255, 59, 95, 0.2);
-  border-color: rgba(255, 59, 95, 0.5);
-}
-
-/* Wallet Modal */
-.wallet-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  opacity: 0;
-  animation: fadeIn 0.2s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.wallet-modal {
-  background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 0;
-  max-width: 400px;
-  width: 90%;
-  max-height: 90vh;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  transform: scale(0.95);
-  animation: modalSlideIn 0.3s ease-out forwards;
-}
-
-@keyframes modalSlideIn {
-  to {
-    transform: scale(1);
-  }
-}
-
-.wallet-modal-header {
-  padding: 24px 24px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.wallet-modal-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin: 0;
-}
-
-.wallet-modal-close {
-  background: none;
-  border: none;
-  color: var(--color-text-secondary);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-}
-
-.wallet-modal-close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-text-primary);
-}
-
-.wallet-modal-content {
-  padding: 24px;
-}
-
-.wallet-modal-subtitle {
-  color: var(--color-text-secondary);
-  margin: 0 0 24px 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.wallet-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.wallet-option {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-decoration: none;
-  color: inherit;
-}
-
-.wallet-option:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 247, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.wallet-option:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.wallet-option:disabled:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: none;
-}
-
-.wallet-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.wallet-icon img {
-  width: 100%;
+  top: 0;
+  left: 0;
+  width: 0%;
   height: 100%;
-  object-fit: cover;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+  transition: width var(--transition-medium);
 }
 
-.wallet-info-text {
-  flex: 1;
+.close-modal-button:hover::before {
+  width: 100%;
 }
 
-.wallet-name {
+.close-modal-button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Step Progress Failed State */
+.step-progress.failed .step-indicator.failed span {
+  background: linear-gradient(45deg, rgba(255, 150, 150, 0.8), rgba(255, 120, 120, 0.9));
+  border-color: rgba(255, 150, 150, 0.8);
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 150, 150, 0.3);
+}
+
+.step-progress.failed .step-indicator.failed label {
+  color: rgba(255, 150, 150, 0.9);
   font-weight: 600;
-  color: var(--color-text-primary);
-  margin: 0 0 4px 0;
-  font-size: 0.95rem;
 }
 
-.wallet-description {
-  color: var(--color-text-secondary);
-  margin: 0;
-  font-size: 0.85rem;
+.step-progress.failed .step-line.failed {
+  background: linear-gradient(to right, rgba(255, 150, 150, 0.6), rgba(255, 120, 120, 0.8));
 }
 
-.wallet-status {
-  font-size: 0.8rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 500;
+/* Responsive Design for Failed Modal */
+@media (max-width: 768px) {
+  .failed-modal-actions {
+    flex-direction: column;
+    padding: var(--space-20) var(--space-24) var(--space-24);
+  }
+  
+  .failed-modal-actions .cta-button {
+    width: 100%;
+  }
+  
+  .transaction-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+  
+  .transaction-info-value {
+    text-align: left;
+  }
+  
+  .error-message {
+    padding: var(--space-16);
+  }
 }
 
-.wallet-status.installed {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+@media (max-width: 480px) {
+  .bridge-modal.failed {
+    margin: var(--space-16);
+    max-width: none;
+    width: calc(100% - var(--space-32));
+  }
+  
+  .failed-modal-actions {
+    padding: var(--space-16);
+  }
+  
+  .modal-header {
+    padding: var(--space-16) var(--space-20);
+  }
+  
+  .modal-content {
+    padding: var(--space-20);
+  }
 }
 
-.wallet-status.not-installed {
-  background: rgba(251, 146, 60, 0.2);
-  color: #fb923c;
+/* Animation for failed state */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
-/* Error state */
-.wallet-error {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(220, 38, 38, 0.05));
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  color: #ef4444;
-  padding: 16px 20px;
-  border-radius: 12px;
-  margin: 16px 0;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.1);
-  animation: errorSlideIn 0.3s ease-out;
+.bridge-modal.failed.shake {
+  animation: shake 0.5s ease-in-out;
 }
 
-.wallet-error svg {
+/* Loading states for retry */
+.try-again-button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.try-again-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 20px;
   height: 20px;
-  flex-shrink: 0;
-  color: #ef4444;
-}
-
-.wallet-error span {
-  flex: 1;
-  line-height: 1.4;
-  font-weight: 500;
-}
-
-.error-dismiss {
-  background: none;
-  border: none;
-  color: #ef4444;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-  flex-shrink: 0;
-}
-
-.error-dismiss:hover {
-  background: rgba(239, 68, 68, 0.1);
-  transform: scale(1.1);
-}
-
-.error-dismiss svg {
-  width: 16px;
-  height: 16px;
-}
-
-@keyframes errorSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Loading state */
-.wallet-connecting {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px;
-  color: var(--color-text-secondary);
-  font-size: 0.9rem;
-}
-
-.wallet-connecting::before {
-  content: '';
-  width: 16px;
-  height: 16px;
   border: 2px solid transparent;
-  border-top: 2px solid currentColor;
+  border-top: 2px solid white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .wallet-modal {
-    margin: 16px;
-    width: calc(100% - 32px);
+.try-again-button.loading span {
+  opacity: 0;
+}
+
+/* Accessibility improvements for failed state */
+.bridge-modal.failed [role="alert"] {
+  padding: var(--space-16);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 150, 150, 0.08);
+  border: 1px solid rgba(255, 150, 150, 0.2);
+  margin: var(--space-16) 0;
+}
+
+/* High contrast mode for failed state */
+@media (prefers-contrast: high) {
+  .bridge-modal.failed {
+    border: 2px solid rgba(255, 150, 150, 0.8);
   }
   
-  .wallet-connected {
-    padding: 6px 10px;
+  .status-failed {
+    background: rgba(255, 120, 120, 0.8);
+    color: white;
+    border: 2px solid rgba(255, 150, 150, 0.9);
   }
   
-  .wallet-address {
-    font-size: 0.8rem;
+  .transaction-details.failed {
+    border: 2px solid rgba(255, 150, 150, 0.8);
+  }
+}
+
+/* Reduced motion for failed state */
+@media (prefers-reduced-motion: reduce) {
+  .step-icon.failed {
+    animation: none;
   }
   
-  .account-menu {
-    min-width: 260px;
+  .bridge-modal.failed.shake {
+    animation: none;
   }
-}
-/* Wallet icon styles */
-.wallet-icon {
-  border-radius: 8px;
-  object-fit: contain;
-  background: transparent;
-}
-
-.wallet-icon img {
-  border-radius: inherit;
-}
-
-/* Wallet modal icon styling */
-.wallet-option .wallet-icon img {
-  border-radius: 12px;
-  transition: transform var(--transition-fast);
-}
-
-.wallet-option:hover .wallet-icon img {
-  transform: scale(1.05);
-}
-
-
-/* Bridge failure styles */
-.failed-icon {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
-  color: #ef4444;
-  border: 2px solid rgba(239, 68, 68, 0.3);
-}
-
-.failed-icon svg {
-  color: #ef4444;
-}
-
-.failure-details {
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.15);
-  border-radius: 12px;
-  padding: 24px;
-  margin: 24px 0;
-}
-
-.error-message {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding: 16px;
-  background: rgba(239, 68, 68, 0.08);
-  border-radius: 8px;
-  border-left: 4px solid #ef4444;
-}
-
-.error-message svg {
-  width: 24px;
-  height: 24px;
-  color: #ef4444;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.error-message h4 {
-  margin: 0 0 8px 0;
-  color: #ef4444;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.error-message p {
-  margin: 0;
-  color: #dc2626;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.status.failed {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.failure-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.failure-actions .cta-button.secondary {
-  background: transparent;
-  color: var(--color-cyan);
-  border: 2px solid var(--color-cyan);
-}
-
-.failure-actions .cta-button.secondary:hover {
-  background: var(--color-cyan);
-  color: var(--color-bg-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 247, 255, 0.3);
-}
-
-
-@media only screen and (max-width: 600px) {
-  .bridge-form {
-    gap: unset;
-  }
-  .bridge-card {
-    padding: var(--space-16);
-    margin: 0 auto;
-    max-width: calc(100vw - 2rem);
-  }
-  .chain-selector{
-    padding: unset;
-  }
-  .swap-chains{
-    height: 20px;
-    width: 20px;
-  }
-  .token-selector{
-    padding: unset;
+  
+  .try-again-button.loading::after {
+    animation: none;
   }
 }

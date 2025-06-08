@@ -22,19 +22,17 @@ const Footer: React.FC = () => {
               <li><Link to="/">Bridge</Link></li>
             </ul>
           </div>
-          
-          <div className="footer-column">
+            <div className="footer-column">
             <h4>Resources</h4>
             <ul>
               <li><Link to="/docs">Documentation</Link></li>
+              <li><Link to="/faq">FAQ</Link></li>
               <li><Link to="/docs">API</Link></li>
             </ul>
           </div>
             <div className="footer-column">
             <h4>Company</h4>
-            <ul>
-              <li><Link to="/about">About</Link></li>
-            </ul>
+      
           </div>
         </div>
       </div>

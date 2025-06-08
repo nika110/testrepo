@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    
+    <title>404 - Page Not Found | Astral Bridge</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to Astral Bridge homepage for lightning-fast cross-chain crypto bridging." />
+    <link rel="canonical" href="https://astralbridge.org/404" />
+    <meta name="robots" content="noindex, follow" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="404 - Page Not Found | Astral Bridge" />
+    <meta property="og:description" content="The page you're looking for doesn't exist. Return to Astral Bridge homepage." />
+    <meta property="og:url" content="https://astralbridge.org/404" />
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+        }        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #7b61ff, #00f7ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            opacity: 0.8;
+        }
+        .back-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #7b61ff, #00f7ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 2rem;
+            transition: transform 0.2s;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Page Not Found</h2>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <a href="/" class="back-link">Return to Astral Bridge</a>
+    </div>
+    
+    <script>
+        // Track 404 errors
+        if (typeof gtag !== 'undefined') {
+            gtag('event', '404_error', {
+                'event_category': 'error',
+                'event_label': window.location.pathname
+            });
+        }
+    </script>
+</body>
+</html>

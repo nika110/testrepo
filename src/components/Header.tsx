@@ -55,9 +55,9 @@ const Header: React.FC = () => {
             <span className="logo-text">Astral Bridge</span>
           </Link>
         </div>
-        <nav>
-          <ul className="nav-links">
+        <nav>          <ul className="nav-links">
             <li><Link to="/docs" className="nav-link">Docs</Link></li>
+            <li><Link to="/faq" className="nav-link">FAQ</Link></li>
           </ul>
           
           {isConnected ? (

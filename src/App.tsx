@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './styles.css';
 
 // Pages
 import Home from './pages/Home';
 import Docs from './pages/Docs';
-import About from './pages/About';
+import FAQ from './pages/FAQ';
 
 // Components
 import Header from './components/Header';
@@ -21,19 +22,21 @@ function App() {
   useEffect(() => {
     initializeTokenPrices();
   }, []);
+  
   return (
-    <WalletProvider>
-      <Router>
-        <Particles />
-        <Header />      
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </WalletProvider>
+    <HelmetProvider>
+      <WalletProvider>
+        <Router>
+          <Particles />
+          <Header />      
+          <Routes>            <Route path="/" element={<Home />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/faq" element={<FAQ />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </WalletProvider>
+    </HelmetProvider>
   );
 }
 

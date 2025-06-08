@@ -1,3 +1,20 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow admin or sensitive areas (add if you have any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap
+Sitemap: https://astralbridge.org/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Allow access to CSS and JS files for proper rendering
+Allow: /static/css/
+Allow: /static/js/
+Allow: /images/
+Allow: /*.css$
+Allow: /*.js$
